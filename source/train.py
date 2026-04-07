@@ -17,8 +17,8 @@ def get_device():
 
 
 def train_clip(
-    num_epochs=5,
-    batch_size=128,  # M4 Pro with 24GB can handle this
+    num_epochs=10,
+    batch_size=128,  
     embed_dim=256,
     learning_rate=1e-4,
     data_root="/Users/michelangelo/Coding/CLIP_from_scratch/flickr30k",

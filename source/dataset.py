@@ -19,15 +19,18 @@ class CustomDataset(Dataset):
         # Load captions CSV
         df = pd.read_csv(captions_file)
 
-        # Group captions by image
+        # Group captions by image, filtering out null/non-string captions
         self.image_to_captions = defaultdict(list)
         for _, row in df.iterrows():
-            self.image_to_captions[row["image"]].append(row["caption"])
+            caption = row["caption"]
+            if pd.notna(caption) and isinstance(caption, str):
+                self.image_to_captions[row["image"]].append(caption)
 
-        # Create list of (image_path, captions) tuples
+        # Create list of (image_path, captions) tuples, only include images with valid captions
         self.data = [
             (os.path.join(self.image_dir, img), caps)
             for img, caps in self.image_to_captions.items()
+            if len(caps) > 0
         ]
 
         self.transform = transforms.Compose(
