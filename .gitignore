@@ -1,6 +1,9 @@
 # Dataset folder
 flickr30k/
 
+# Test images
+ui/test_images/
+
 # Python cache
 __pycache__/
 *.pyc

@@ -108,6 +108,20 @@ By default it loads `clip_checkpoint_epoch_10.pt` and evaluates on 1,000 random 
 
 ---
 
+## Search UI
+
+A minimal Gradio app for interactive image search using the trained model.
+
+```bash
+python ui/app.py
+```
+
+- **Upload** any images to build an in-memory index
+- **Search** with a text query — returns top-5 most similar images ranked by cosine similarity
+- Sample test images (15 cats, 15 dogs, 15 objects) are in `ui/test_images/`
+
+---
+
 ## Project Structure
 
 ```
@@ -119,6 +133,9 @@ By default it loads `clip_checkpoint_epoch_10.pt` and evaluates on 1,000 random 
 │   ├── train.py           # Training loop with checkpointing
 │   ├── evaluate.py        # Recall@K retrieval evaluation
 │   └── check_dataset.py   # Dataset inspection utility
+├── ui/
+│   ├── app.py             # Gradio search UI
+│   └── test_images/       # Sample images for testing
 ├── flickr30k/             # Dataset (not tracked in git)
 └── README.md
 ```
